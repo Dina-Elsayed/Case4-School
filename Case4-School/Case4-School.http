@@ -1,0 +1,6 @@
+@Case4_School_HostAddress = http://localhost:5054
+
+GET {{Case4_School_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
