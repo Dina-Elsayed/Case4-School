@@ -1,5 +1,9 @@
 
 using Case4_School.AppDbContext;
+using Case4_School.Repos;
+using Case4_School.Repos.Implementation;
+using Case4_School.Repos.Interface;
+using Case5_ClubSystem.Repos.Implementation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Case4_School
@@ -19,6 +23,15 @@ namespace Case4_School
 
             builder.Services.AddDbContext<SchoolDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+            builder.Services.AddScoped<IStudentRepo, StudentRepo>();
+            builder.Services.AddScoped<ITeacherRepo, TeacherRepo>();
+            builder.Services.AddScoped<ICourseRepo, CourseRepo>();
+            builder.Services.AddScoped<IEnrollmentRepo, EnrollmentRepo>();
+            builder.Services.AddScoped<IReportRepo, ReportRepo>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+           
 
             var app = builder.Build();
 

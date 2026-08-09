@@ -12,6 +12,7 @@ namespace Case4_School.Repos.Implementation
 
         public StudentRepo(SchoolDbContext context) : base(context)
         {
+            _context = context;
         }
 
 
